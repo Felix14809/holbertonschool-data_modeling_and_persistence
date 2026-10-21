@@ -1,3 +1,3 @@
 UPDATE books
-SET price = ROUND(price * 1.1, 2)
+SET price = price * 0.9
 WHERE genre = 'Tech' AND stock > 5;
