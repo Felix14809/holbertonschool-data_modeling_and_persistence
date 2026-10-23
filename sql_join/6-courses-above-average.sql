@@ -2,12 +2,11 @@ SELECT c.title
 FROM courses c
 LEFT JOIN enrollments e ON e.course_id = c.id
 GROUP BY c.id
-HAVING COUNT(e.student_id) > (
+HAVING COUNT(*) > (
     SELECT AVG(total)
     FROM (
-        SELECT COUNT(e.student_id) AS total
-        FROM courses c
-        LEFT JOIN enrollments e ON e.course_id = c.id
+        SELECT COUNT(*) AS total
+        FROM enrollments
         GROUP BY c.id
     )
 )
